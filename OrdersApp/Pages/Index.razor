@@ -1,14 +1,121 @@
 ﻿@page "/"
+@using Orders.Common.Records
+@using Orders.Common.Classes
 
 <PageTitle>Orders</PageTitle>
 
 <h1>Orders</h1>
 
-<div class="input-group">
-    <input type="text" class="form-control" placeholder="Customer Name" />
-    <input type="text" class="form-control" placeholder="Address"/>
-    <button class="btn btn-primary" type="button">Add</button>
-
+<div class="container">
+    <div class="input-group mb-4">
+        <input type="text" class="form-control" placeholder="Customer Name" @bind="customer" />
+        <input type="text" class="form-control" placeholder="Address" @bind="address" />
+        <button class="btn btn-primary" type="button" @onclick="AddOrder">Add</button>
+    </div>
+    <div class="btn-group mb-4">
+        @foreach (var order in orders.Get())
+        {
+            <button class="btn btn-outline-success" @onclick="@(e => CurrentOrder(order))">@order.Id: @order.Customer (@order.Address)</button>
+        }
+    </div>
 </div>
 
 
+<br/>
+@* <div class="input-group mb-3">
+    <span class="input-group-text">Product</span>
+    <input type="text" class="form-control" @bind="product"/>
+    <span class="input-group-text">#</span>
+    <input type="text" class="form-control" @bind="quantity"/>
+    <span class="input-group-text">$</span>
+    <input type="text" class="form-control" @bind="price"/>
+    <span class="input-group-text">VAT</span>
+    <input type="text" class="form-control" @bind="vat"/>
+    <button class="btn btn-primary" type="button" @onclick="AddLineItem">Add</button>
+</div>
+<br/>
+<div class="row">
+    <table class="table table-striped">
+        <thead class="table-success">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Product</th>
+                <th scope="col">Qty</th>
+                <th scope="col">Price</th>
+                <th scope="col">VAT%</th>
+                <th scope="col">VAT$</th>
+                <th scope="col">Total</th>
+            </tr>
+        </thead>
+
+    </table>
+</div> *@
+
+
+@code{
+    string error = string.Empty;
+    string customer = string.Empty;
+    string address = string.Empty;
+    Order? currentOrder = default;
+
+    int id = default;
+    string product = string.Empty;
+    int quantity = default;
+    double price = default;
+    double vat = default;
+
+
+    OrderFactory orders = new();
+    LineItem lineItem = new();
+
+    void AddOrder()
+    {
+        try
+        {
+            ResetErrorVariable();
+            orders.Add(customer, address);
+            CurrentOrder(orders.Latest());
+            ResetCustumerVariables();
+        }
+        catch (Exception ex)
+        {
+            error = ex.Message;
+        }
+    }
+    void CurrentOrder(Order? order) => currentOrder = order; 
+
+    void AddLineItem()
+    {
+        try
+        {
+            ResetErrorVariable();
+
+            currentOrder?.AddLineItems(product,quantity,price,vat);
+
+            ResetLineItemsVariables();
+
+        }
+        catch (Exception ex)
+        {
+            error = ex.Message;
+        }
+    }
+    void ResetErrorVariable()
+    {
+        error = string.Empty;
+    }
+    void ResetCustumerVariables()
+    {
+        customer = string.Empty;
+        address = string.Empty;
+    }
+    void ResetLineItemsVariables()
+    {
+        product = string.Empty;
+        quantity = default;
+        price = default;
+        vat = default;
+    }
+
+
+}
