@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34018.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersApp", "OrdersApp\OrdersApp.csproj", "{1DFEA612-D8B4-4763-B244-6B77257503E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orders.Common", "Orders.Common\Orders.Common.csproj", "{297D694B-2A52-467A-803A-0DC5E5159042}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1DFEA612-D8B4-4763-B244-6B77257503E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DFEA612-D8B4-4763-B244-6B77257503E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DFEA612-D8B4-4763-B244-6B77257503E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DFEA612-D8B4-4763-B244-6B77257503E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{297D694B-2A52-467A-803A-0DC5E5159042}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{297D694B-2A52-467A-803A-0DC5E5159042}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{297D694B-2A52-467A-803A-0DC5E5159042}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{297D694B-2A52-467A-803A-0DC5E5159042}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2106E272-D3BA-44AA-A7C6-6A70BB7CA1A5}
+	EndGlobalSection
+EndGlobal
